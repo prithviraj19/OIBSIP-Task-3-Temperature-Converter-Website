@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			font-family:Verdana,sans-serif;
+		}
+		.container {
+			width: 100%;
+			height: 100vh;
+			background-image:linear-gradient(rgb(224, 142, 11),rgb(178, 183, 178));
+			display: flex;
+			flex-direction:column;
+			justify-content: center;
+			align-items: center;
+		}
+		.container h1 {
+			color: rgb(82, 68, 202);
+			font-weight: 700;
+			font-size: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+			text-align: center;
+		}
+		.converter-r {
+			display: flex;
+			width: 40%;
+			justify-content: space-between;
+			align-items: center;
+			background: rgb(196, 11, 45);
+			border-radius: 50px;
+			padding: 50px 20px;
+		}
+		.col {
+			flex-basis: 32%;
+			text-align: center;
+		}
+		.col label {
+			font-size: 25px;
+			font-weight:1500;
+			margin-bottom: 50px;
+			color: #0a0a0a;
+		}
+		.col input {
+			width: 150px;
+			height: 35px;
+			background: white;
+			border-radius: 50px;
+			text-align: center;
+		}
+        footer {
+           text-align: center;
+           padding:3px;
+           background-color:DarkSalmon;
+           color:white;
+        }
+	</style>
+</head>
+<body>
+    <marquee behaviour="scroll" direction="left">
+       <b><i>Enter details in the below input box.</b></i></marquee>
+    </marquee>
+	<div class="container">
+		<h1>Temperature Converter</h1>
+		<div class="converter-r">
+			<div class="col">
+				<label>Fahrenheit(°F)</label>
+				<input type="number" id="fahrenheit" placeholder="Input Here">
+			</div>
+			<div class="col">
+				<label>Celsius(°C)</label>
+				<input type="number" id="celsius" placeholder="Input Here">
+			</div>
+			<div class="col">
+				<label>Kelvin(K)</label>
+				<input type="number" id="kelvin" placeholder="Input Here">
+			</div> 
+		</div>
+	</div>
+	<script>
+		let celsius =document.getElementById('celsius');
+		let fahrenheit =document.getElementById('fahrenheit');
+		let kelvin =document.getElementById('kelvin');
+		celsius.oninput = function() {
+			let f = (parseFloat(celsius.value) * 9) / 5 + 32;
+            fahrenheit.value = parseFloat(f.toFixed(2));
+			let k = (parseFloat(celsius.value) + 273.15);
+			kelvin.value = parseFloat(k.toFixed(2));
+		}
+		fahrenheit.oninput = function() {
+			let c = ((parseFloat(
+				fahrenheit.value) - 32) * 5) / 9;
+			celsius.value = parseFloat(c.toFixed(2));
+			let k = (parseFloat(fahrenheit.value) - 32) * 5 / 9 + 273.15;
+			kelvin.value = parseFloat(k.toFixed(2));
+		}
+		kelvin.oninput = function() {
+			let f = (parseFloat(kelvin.value) - 273.15) * 9 / 5 + 32;
+			fahrenheit.value = parseFloat(f.toFixed(2));
+			let c = (parseFloat(kelvin.value) - 273.15);
+			celsius.value = parseFloat(c.toFixed(2));
+		}
+	</script>
+    <footer>
+        Designed By:Prithviraj Singh Rathore<br>
+        For feedbacks:
+        <a href="mailto:psrathore19602@gmail.com">psrathore19602@gmail.com</a>
+    </footer>      
+</body>
+</html>
